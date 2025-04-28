@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: skala-stock-api
+  namespace: skala-edu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: skala-stock-api
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8081'
+        prometheus.io/path: '/actuator/prometheus'
+        update: eb6bad62106bd7d3dfc3477f98bfa4fb
+      labels:
+        app: skala-stock-api
+    spec:
+      serviceAccountName: default
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: control-plane
+                operator: In
+                values:
+                - "amdp"
+      containers:
+      - name: stock-api
+        image: amdp-registry.skala-ai.com/skala25a/skala-stock-api:1.0.0
+        imagePullPolicy: Always
+        env:
+        - name: LOGGING_LEVEL
+          value: DEBUG
+        - name: USER_NAME
+          value: skala
+        - name: NAMESPACE
+          value: skala-edu
+      tolerations:
+      - effect: 
+        key: control-plane
+        operator: Equal
+        value: "amdp"

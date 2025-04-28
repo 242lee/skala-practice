@@ -1,0 +1,33 @@
+{
+  "groups": [
+    {
+      "name": "application",
+      "type": "com.sk.skala.stockapi.config.ApplicationProperties",
+      "sourceType": "com.sk.skala.stockapi.config.ApplicationProperties"
+    },
+    {
+      "name": "application.health",
+      "type": "com.sk.skala.stockapi.config.ApplicationProperties$Health",
+      "sourceType": "com.sk.skala.stockapi.config.ApplicationProperties",
+      "sourceMethod": "public com.sk.skala.stockapi.config.ApplicationProperties.Health getHealth() "
+    }
+  ],
+  "properties": [
+    {
+      "name": "application.health.timeout",
+      "type": "java.lang.Long",
+      "sourceType": "com.sk.skala.stockapi.config.ApplicationProperties$Health"
+    },
+    {
+      "name": "application.health.url",
+      "type": "java.lang.String",
+      "sourceType": "com.sk.skala.stockapi.config.ApplicationProperties$Health"
+    },
+    {
+      "name": "application.name",
+      "type": "java.lang.String",
+      "sourceType": "com.sk.skala.stockapi.config.ApplicationProperties"
+    }
+  ],
+  "hints": []
+}
