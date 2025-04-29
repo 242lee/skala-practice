@@ -47,6 +47,7 @@ pipeline {
                         digest = digest.split('@')[1]
                         sh """
                         sed -i 's|image: .*|image: ${IMAGE_REGISTRY}/${IMAGE_NAME}@${digest}|' k8s/deploy.yaml
+                        cat k8s/deploy.yaml
                         """
                     }
                 }
