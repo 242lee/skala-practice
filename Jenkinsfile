@@ -61,7 +61,7 @@ pipeline {
                             def cleanGitUrl = "${GIT_URL.replace('https://', '').replace('.git', '')}"
                             sh """
                             git config user.name "${GIT_USERNAME}"
-                            git config user.email dlthgml1501@gmail.com
+                            git config user.email iamurmaster_@naver.com
                             git add k8s/deploy.yaml
                             git commit -m "Update image to ${IMAGE_TAG} with digest ${digest}" || echo "No changes to commit"
                             git push https://${GIT_USERNAME}:${GIT_PASSWORD}@${cleanGitUrl} ${GIT_BRANCH}
