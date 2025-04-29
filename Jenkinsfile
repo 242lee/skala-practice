@@ -4,7 +4,7 @@ pipeline {
     environment {
         GIT_URL = 'https://github.com/242lee/skala-practice.git'
         GIT_BRANCH = 'main' // 또는 master
-        GIT_ID = 'skala-github-20' // GitHub PAT credential ID
+        GIT_ID = 'skala-github-id' // GitHub PAT credential ID
         IMAGE_REGISTRY = 'amdp-registry.skala-ai.com/skala25a'
         IMAGE_NAME = 'sk020-my-app'
         IMAGE_TAG = '1.0.kaniko-docker'
@@ -62,7 +62,7 @@ pipeline {
                             def cleanGitUrl = "${GIT_URL.replace('https://', '').replace('.git', '')}"
                             sh """
                             git config user.name "${GIT_USERNAME}"
-                            git config user.email iamurmaster_@naver.com
+                            git config user.email dlthgml1501@gmail.com
                             git add k8s/deploy.yaml
                             git commit -m "Update image to ${IMAGE_TAG} with digest ${digest}" || echo "No changes to commit"
                             git push https://${GIT_USERNAME}:${GIT_PASSWORD}@${cleanGitUrl} ${GIT_BRANCH}
