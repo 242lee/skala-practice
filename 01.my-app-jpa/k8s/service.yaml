@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sk000-my-app
+  name: sk020-my-app
   namespace: skala-practice
 spec:
   selector:
-    app: sk000-my-app
+    app: sk020-my-app
   ports:
     - name: http
       protocol: TCP
